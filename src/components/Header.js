@@ -28,11 +28,11 @@ const Header = () => {
                     Experience
                 </Link>
             </li>
-            {/* <li>
+            <li>
               <Link to="/contact" className="hover:text-blue-400">
                 Contact
               </Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>

@@ -13,22 +13,35 @@ const Contact = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", anonymous ? { message: formData.message } : formData);
-    alert("Message submitted!");
+    e.preventDefault()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify(formData);
+    console.log(raw)
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+
+    fetch("https://wordle-latest.onrender.com/personalWebsite/sendAMessage", requestOptions)
+      .then((response) => response.text())
+      .then((result) => alert("message sent"))
+      .catch((error) => alert("something went wrong", error));
   };
 
-  const sumbitMessage = (e) => {
-    console.log(e)
-  }
+
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4">
       <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">Contact Me</h2>
       <p className="text-2xl  text-center mb-8 text-gray-800">Have a suggestion, project idea, questions or anything else..</p>
       <form
-        onSubmit={handleSubmit}
         className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md space-y-6"
+        onSubmit={handleSubmit}
       >
         {/* Anonymous Toggle */}
         <div className="flex items-center justify-between">
@@ -89,7 +102,6 @@ const Contact = () => {
         <button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
-          onClick={sumbitMessage}
         >
           Send Message
         </button>
