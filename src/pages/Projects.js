@@ -2,6 +2,11 @@ import React from "react";
 
 const projects = [
   {
+    title: "Multiplayer wordle",
+    description: "Wordle game where you can play with friends, compete in leaderboards and more..",
+    link: "https://multiplayer-wordle-react-ui.vercel.app/"
+  },
+  {
     title: "Shrinkin Shapes",
     description: "A 2D game made using Unity",
     link: "https://github.com/Kapsule98/Shrinking-Shapes/tree/master",
